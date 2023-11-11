@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/shared/layout::dynamic(~{::title},~{::main})}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:fragment="title">Đăng ký thành viên</title>
+</head>
+
+<body>
+    <main th:fragment="main">
+        
+	    
+	    <section class="vh-100 gradient-custom">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+      			
+        <form th:object="${account}" action="/account/sign-up" method="post">
+        <b><i th:text="${message}"></i></b>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">User name</label>
+            <input type="text"  th:field="*{username}"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" th:field="*{password}"  class="form-control" id="exampleInputPassword1">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Confirm password</label>
+            <input type="password" name="confirm"  class="form-control" id="exampleInputPassword1">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Full name</label>
+            <input type="text"  th:field="*{fullname}"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email</label>
+            <input type="text"  th:field="*{email}"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          </div>
+          
+            <input type="hidden"  th:field="*{photo}"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          
+          <div class="mb-3 form-check">
+             <a href="/account/register">Or Register</a>
+          </div>
+          <button type="submit" class="btn btn-primary">Resister</button>
+          <a class="btn btn-primary" href="/home/index">Cancel</a>
+        </form>
+        
+      </div>
+    </div>
+  </div>
+</section>
+    </main>
+</body>
+
+</html>

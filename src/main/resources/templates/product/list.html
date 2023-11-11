@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/shared/layout::dynamic(~{::title},~{::main})}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title th:fragment="title">Product List</title>
+</head>
+
+<body>
+    <main th:fragment="main">
+        <th:block th:each="p: ${items}">
+        	<ul>
+        		<li>Name: <b th:text="${p.name}"></b></li>
+    			<li>Price: <b th:text="${p.price}"></b></li>
+    			<li><img th:src="@{|/rsx/img/${p.image}|}"></img></li>
+        		<li>
+        			<a th:href="@{|/product/detail/${p.id}|}">Detail</a> |
+        			<a th:href="@{|/cart/add/${p.id}|}">Add To Cart</a>
+        		</li>
+        	</ul>
+        </th:block>
+    </main>
+</body>
+
+</html>

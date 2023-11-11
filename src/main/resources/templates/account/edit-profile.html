@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/shared/layout::dynamic(~{::title},~{::main})}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:fragment="title">Cập nhật tài khoản</title>
+</head>
+
+<body>
+    <main th:fragment="main">
+		<section class="bg-light" >
+			<div class="container" >
+				<div class="row" >
+					<div class="col-lg-12 mb-4 mb-sm-5">
+						<div class="card card-style1 border-0" style="padding: 20px">
+							<div class="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
+							<form action="/account/edit-profile" method="post" th:object="${account}" enctype="multipart/form-data">
+								<div class="row align-items-center" >
+									<div class="col-lg-6 mb-4 mb-lg-0">
+										<img th:src="@{|/rsx/img/*{photo}|}" style="width: 315px;" alt="...">
+										<input th:field="*{photo}" type="hidden">
+										<input th:field="*{password}" type="hidden">
+									</div>
+									<div class="col-lg-6 px-xl-10">
+										
+										<ul class="list-unstyled mb-1-9">
+										 <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600" th:text="${message}"></span> </li>
+											<li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Username:</span> 
+												<input type="text" th:field="*{username}" readonly  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+											</li>
+											<li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Fullname:</span>
+											<input type="text" th:field="*{fullname}"   class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+											</li>
+											<li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Email:</span> 
+												<input type="text" th:field="*{email}"   class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+											</li>
+										</ul>
+										<button type="submit" class="btn btn-success">update</button>	
+									</div>
+									
+								</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+	th:replace="~{/shared/layout::dynamic(~{::title},~{::main})}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:fragment="title">Trang chủ</title>
+</head>
+
+<body>
+    <main th:fragment="main">
+        
+     <section class="vh-100 gradient-custom">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+      			<div class="text-center">
+                  
+                  <h1 class="mt-1 mb-5 pb-1 text-success">Login</h1>
+                </div>
+        <form action="/security/login" method="post">
+        <b><i th:text="${message}"></i></b>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">User name</label>
+            <input type="text"  name="username"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" name="password"  class="form-control" id="exampleInputPassword1">
+          </div>
+          <div class="mb-3">
+	          <div class="form-check">
+				  <input class="form-check-input" type="checkbox" name="remember" value="" id="flexCheckDefault">
+				  <label class="form-check-label" for="flexCheckDefault">
+				    Remember
+				  </label>
+			  </div>
+		  </div>
+          <div class="mb-3 form-check">
+             <a href="/account/register">Or Register</a>
+          </div>
+          <button type="submit" class="btn btn-success">Login</button>
+          <a class="btn btn-success" href="/home/index">Cancel</a>
+        </form>
+        
+      </div>
+    </div>
+  </div>
+</section>
+    </main>
+</body>
+
+</html>

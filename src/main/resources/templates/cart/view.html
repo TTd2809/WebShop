@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/shared/layout::dynamic(~{::title},~{::main})}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:fragment="title">Quản lý giỏ hàng</title>
+</head>
+
+<body>
+    <main th:fragment="main">
+        <div class="container">
+        	<h2>Quản lý giỏ hàng</h2>
+        <form action="/cart/update" method="post">
+	        <table class="table table-hover">
+			    <thead class="table-success">
+			        <tr>
+			            <th>No</th>
+			            <th>Id</th>
+			            <th>Name</th>
+			            <th>Price</th>
+			            <th>Quantity</th>
+			            <th>Amount</th>
+			            <th></th>
+			        </tr>
+			    </thead>
+			    <tbody>
+			        <tr th:each="item: ${@cart.items}">
+			            <td>Index</td>
+			            <td th:text="${item.id}">Id</td>
+			            <td  th:text="${item.name}">Name</td>
+			            <td  th:text="${item.price}">Price</td>
+			            <td><input th:name="@{|qty_${item.id}|}" type="number" th:value="${item.quantity}"></td>
+			            <td  th:text="${item.amount}">Amount</td>
+			            <td>
+			                <a th:href="@{|/cart/remove/${item.id}|}">Remove</a>
+			            </td>
+			        </tr>
+			    </tbody>
+			</table>
+			<div>
+				<button class="btn btn-success">Update Quantity</button>
+				<a class="btn btn-success" href="/cart/clear">Clear Cart</a>
+				<a class="btn btn-success" href="/order/checkout">Checkout</a>
+			</div>
+    	</form>
+        </div>
+    </main>
+</body>
+
+</html>

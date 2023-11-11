@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title th:fragment="title">Fragments</title>
+</head>
+
+<body>
+    
+    
+    <nav th:fragment="menu_top" class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
+        <div class="container text-light">
+            <div class="w-100 d-flex justify-content-between">
+                <div>
+                    <i class="fa fa-envelope mx-2"></i>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@company.com">info@company.com</a>
+                    <i class="fa fa-phone mx-2"></i>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">010-020-0340</a>
+                </div>
+                <div>
+                    <a class="text-light" href="https://fb.com/templatemo" target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="https://www.instagram.com/" target="_blank"><i class="fa-thin fa-magnifying-glass"></i></a>
+                    <a class="text-light" href="https://twitter.com/" target="_blank"><i class="fab fa-twitter fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin fa-sm fa-fw"></i></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <nav  th:fragment="menu" class="navbar navbar-expand-lg navbar-light shadow">
+	    <div class="container d-flex justify-content-between align-items-center">
+	    	<a class="navbar-brand text-success logo h1 align-self-center" href="/home/index">
+                Mobile
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
+                <div class="flex-fill">
+                    <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/home/index"><i class="fa fa-home	
+                            "></i> Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/home/shop"><i class="fa fa-shopping-bag"></i> Shop</a>	
+                            
+                        </li>
+                        
+                        
+                        <th:block th:if="${#authentication.name == 'anonymousUser'}">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/security/login/form"><i class="fa fa-sign-in	
+                            "></i> Sign In</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="/account/sign-up"><i class="fa fa-sign-
+                            "></i> Sign Up</a>
+                        </li>
+                        </th:block>
+                        <th:block th:if="${#authentication.name != 'anonymousUser'}">
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="/account/change-password">Change Password</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="/order/list">My Orders</a>
+                        </li>
+                        </th:block>
+                    </ul>
+                </div>
+                <div class="navbar align-self-center d-flex">
+                    
+                    <a class="nav-icon position-relative text-decoration-none" href="/cart/view">
+                        <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
+                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark" th:text="${@cart.totalCount}"></span>
+                    </a>
+                    <a class="nav-icon position-relative text-decoration-none" th:if="${#request.isUserInRole('STAF')}" href="/admin">
+                        <i class="fa-fw fa fa-clipboard	text-dark mr-3"></i>
+                    </a>
+                   
+                    <a class="nav-icon position-relative text-decoration-none" th:unless="${#authentication.name == 'anonymousUser'}" href="/account/edit-profile">
+                        <i class="fa-fw fa fa-user text-dark mr-3"></i>
+                    </a>
+                	 <a class="nav-icon position-relative text-decoration-none" th:unless="${#authentication.name == 'anonymousUser'}" href="/security/logout">
+                        <i class="fa-fw fa fa-sign-out text-dark mr-3"></i>
+                    </a>
+                </div>
+            </div>
+	    </div>
+    	
+    </nav>
+    
+    <footer th:fragment="footer" class="bg-dark" id="tempaltemo_footer">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-4 pt-5">
+                    <h2 class="h2 text-success border-bottom pb-3 border-light logo">Zay Shop</h2>
+                    <ul class="list-unstyled text-light footer-link-list">
+                        <li>
+                            <i class="fas fa-map-marker-alt fa-fw"></i>
+                            123 Consectetur at ligula 10660
+                        </li>
+                        <li>
+                            <i class="fa fa-phone fa-fw"></i>
+                            <a class="text-decoration-none" href="tel:010-020-0340">010-020-0340</a>
+                        </li>
+                        <li>
+                            <i class="fa fa-envelope fa-fw"></i>
+                            <a class="text-decoration-none" href="mailto:info@company.com">info@company.com</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4 pt-5">
+                    <h2 class="h2 text-light border-bottom pb-3 border-light">Products</h2>
+                    <ul class="list-unstyled text-light footer-link-list">
+                        <li><a class="text-decoration-none" href="#">Luxury</a></li>
+                        <li><a class="text-decoration-none" href="#">Sport Wear</a></li>
+                        <li><a class="text-decoration-none" href="#">Men's Shoes</a></li>
+                        <li><a class="text-decoration-none" href="#">Women's Shoes</a></li>
+                        <li><a class="text-decoration-none" href="#">Popular Dress</a></li>
+                        <li><a class="text-decoration-none" href="#">Gym Accessories</a></li>
+                        <li><a class="text-decoration-none" href="#">Sport Shoes</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4 pt-5">
+                    <h2 class="h2 text-light border-bottom pb-3 border-light">Further Info</h2>
+                    <ul class="list-unstyled text-light footer-link-list">
+                        <li><a class="text-decoration-none" href="#">Home</a></li>
+                        <li><a class="text-decoration-none" href="#">About Us</a></li>
+                        <li><a class="text-decoration-none" href="#">Shop Locations</a></li>
+                        <li><a class="text-decoration-none" href="#">FAQs</a></li>
+                        <li><a class="text-decoration-none" href="#">Contact</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="row text-light mb-4">
+                <div class="col-12 mb-3">
+                    <div class="w-100 my-3 border-top border-light"></div>
+                </div>
+                <div class="col-auto me-auto">
+                    <ul class="list-inline text-left footer-icons">
+                        <li class="list-inline-item border border-light rounded-circle text-center">
+                            <a class="text-light text-decoration-none" target="_blank" href="http://facebook.com/"><i class="fab fa-facebook-f fa-lg fa-fw"></i></a>
+                        </li>
+                        <li class="list-inline-item border border-light rounded-circle text-center">
+                            <a class="text-light text-decoration-none" target="_blank" href="https://www.instagram.com/"><i class="fab fa-instagram fa-lg fa-fw"></i></a>
+                        </li>
+                        <li class="list-inline-item border border-light rounded-circle text-center">
+                            <a class="text-light text-decoration-none" target="_blank" href="https://twitter.com/"><i class="fab fa-twitter fa-lg fa-fw"></i></a>
+                        </li>
+                        <li class="list-inline-item border border-light rounded-circle text-center">
+                            <a class="text-light text-decoration-none" target="_blank" href="https://www.linkedin.com/"><i class="fab fa-linkedin fa-lg fa-fw"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-auto">
+                    <label class="sr-only" for="subscribeEmail">Email address</label>
+                    <div class="input-group mb-2">
+                        <input type="text" class="form-control bg-dark border-light" id="subscribeEmail" placeholder="Email address">
+                        <div class="input-group-text btn-success text-light">Subscribe</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-100 bg-black py-3">
+            <div class="container">
+                <div class="row pt-2">
+                    <div class="col-12">
+                        <p class="text-left text-light">
+                            Copyright &copy; 2021 Company Name 
+                            | Designed by <a rel="sponsored" href="https://templatemo.com" target="_blank">TemplateMo</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+       
+    <nav th:fragment="account">
+    	<a href="/security/login/form">Sign In</a> ::
+    	<a href="/account/forgot-password">Forgot Password</a> ::
+    	<a href="/account/sign-up">Sign Up</a> 
+
+    	<th:block th:if="${#authentication.name != 'anonymousUser'}">
+	    	::
+	    	<a href="/account/edit-profile">Edit Profile</a> ::
+	    	<a href="/account/change-password">Change Password</a> ::
+	    	<a href="/security/logout">Sign Out</a> ::
+	    	<a href="/order/list">My Orders</a>
+    	</th:block>
+    </nav>
+        
+    <div th:fragment="categories">
+    	<th:block th:each="c, s: ${@categoryService.findAll()}">
+    		<a th:href="@{|/product/list-by-category/${c.id}|}" th:text="${c.name}"></a> 
+    		<th:block th:unless="${s.last}">|</th:block>
+    	</th:block>
+    </div>
+</body>
+
+</html>
